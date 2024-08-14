@@ -30,7 +30,6 @@ def deciphered_sentence(original_sentence: str, known_word: str) -> str:
                 return apply_shift(original_sentence, shift)
     return "invalid"
 
-
 original_sentence = "Coding was super fun!"
 known_word = "gvo"
 expected_output = "Dpejoh xbt tvqfs gvo!"
