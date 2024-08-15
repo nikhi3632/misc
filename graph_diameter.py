@@ -46,6 +46,7 @@ def longest_shortest_path(edges):
     farthest_node, _ = bfs(start_node, graph)
     # Perform BFS from the farthest node found to determine the diameter
     _, diameter = bfs(farthest_node, graph)
+    # two-pass BFS technique: Graphy theory insight, by performing BFS from an arbitrary node we identify a node that is farthest from the start, and this node is always one end of the longest shortest path.
     return diameter
 
 edges = [(1, 2), (1, 3), (2, 4), (3, 5), (4, 6), (5, 6)]
