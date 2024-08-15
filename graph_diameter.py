@@ -10,6 +10,13 @@
 
 from collections import deque, defaultdict
 
+def build_graph(edges):
+    graph = defaultdict(list)
+    for u, v in edges:
+        graph[u].append(v)
+        graph[v].append(u)
+    return graph
+
 def bfs(start_node, graph):
     """
     Perform BFS from start_node and return the farthest node and its distance from start_node.
@@ -36,17 +43,15 @@ def longest_shortest_path(edges):
     Find the diameter of the graph defined by the edges.
     """
     # Build the graph
-    graph = defaultdict(list)
-    for u, v in edges:
-        graph[u].append(v)
-        graph[v].append(u)
+    graph = build_graph(edges)
     # arbitrary starting node (e.g., the first node in the graph)
     start_node = next(iter(graph))
     # Perform BFS from the start node to find the farthest node
     farthest_node, _ = bfs(start_node, graph)
     # Perform BFS from the farthest node found to determine the diameter
     _, diameter = bfs(farthest_node, graph)
-    # two-pass BFS technique: Graphy theory insight, by performing BFS from an arbitrary node we identify a node that is farthest from the start, and this node is always one end of the longest shortest path.
+    # two-pass BFS technique: Graphy theory insight, by performing BFS from an arbitrary node we identify 
+    # a node that is farthest from the start, and this node is always one end of the longest shortest path.
     return diameter
 
 edges = [(1, 2), (1, 3), (2, 4), (3, 5), (4, 6), (5, 6)]
