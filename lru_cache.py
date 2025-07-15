@@ -73,7 +73,7 @@ LRU Cache Design & Implementation
 
     Most operations stay at amortized O(1), unless many expired nodes accumulate.
 '''
-
+from __future__ import annotations
 import time
 import threading
 
@@ -82,8 +82,8 @@ class Node:
         self.key = key
         self.value = value
         self.expire_at = expire_at
-        self.prev = None
-        self.next = None
+        self.prev: Node | None = None
+        self.next: Node | None = None
 
 class LRUCache:
     def __init__(self, capacity: int):
