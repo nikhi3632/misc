@@ -65,12 +65,12 @@ LRU Cache Design & Implementation
         Lock granularity is coarse (full method), which is safe and simple.
 
 ✅ 6. Time Complexity
-    Operation	                Time Complexity
-    get(key)	                O(1)
-    put(key, value, ttl)	    O(1)
-    resize(new_capacity)	    O(k) where k = # of evictions (usually small)
-    _evict_expired()	        O(k) — lazy removal during operations
-    
+    Operation	                    Time Complexity
+    get(key)	                    O(1)
+    put(key, value, ttl)	        O(1)
+    resize(new_capacity)	        O(k) where k = # of evictions (usually small)
+    _evict_expired()	            O(k) — lazy removal during operations
+
     Most operations stay at amortized O(1), unless many expired nodes accumulate.
 '''
 
